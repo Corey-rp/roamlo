@@ -1,0 +1,257 @@
+/* Shared stylesheet for all RoamLo pages */
+
+/* Base page styling */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6fa;
+  color: #1c2733;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+/* Header styling used on each page */
+header.site-header {
+  background-color: #0b1f3a;
+  color: #ffffff;
+  padding: 28px 20px;
+  text-align: center;
+  border-bottom: 4px solid #4fa3ff;
+}
+
+header.site-header h1 {
+  margin: 0 0 6px;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+}
+
+header.site-header p.tagline {
+  margin: 0;
+  color: #9fb3d1;
+  font-size: 1rem;
+}
+
+/* Navigation section */
+nav.page-links {
+  text-align: center;
+  margin: 18px 0 30px;
+  padding: 14px;
+  background-color: #e7edf7;
+  border-radius: 8px;
+}
+
+nav.page-links a {
+  color: #0b1f3a;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav.page-links a:hover {
+  text-decoration: underline;
+  color: #4fa3ff;
+}
+
+/* Main image used on each page */
+img.feature-image {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 10px;
+  border: 3px solid #0b1f3a;
+}
+
+/* Home page introduction paragraph */
+.p-intro {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #0b1f3a;
+  font-size: 1.15rem;
+}
+
+/* Home page problem paragraph */
+.p-problem {
+  font-family: Verdana, Geneva, sans-serif;
+  color: #3a2b00;
+  background-color: #fff3cd;
+  padding: 12px 16px;
+  border-left: 5px solid #e8b96b;
+}
+
+/* Home page goals paragraph */
+.p-goals {
+  font-family: 'Courier New', Courier, monospace;
+  color: #0f6b5c;
+  font-style: italic;
+}
+
+/* Budget page introduction paragraph */
+.p-features-intro {
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #16223a;
+  background-color: #e7edf7;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* Budget page estimate note */
+.p-roadmap-note {
+  font-family: Arial, sans-serif;
+  color: #a13d1f;
+  font-weight: bold;
+}
+
+/* Budget page project status */
+.p-status {
+  font-family: Tahoma, sans-serif;
+  color: #5a6472;
+  font-size: 0.95rem;
+}
+
+/* About page introduction paragraph */
+.p-about-me {
+  font-family: 'Palatino Linotype', Georgia, serif;
+  color: #0b1f3a;
+  font-size: 1.15rem;
+}
+
+/* About page skills paragraph */
+.p-skills {
+  font-family: Verdana, sans-serif;
+  color: #08402f;
+  background-color: #dcf5e8;
+  padding: 12px 16px;
+  border-left: 5px solid #27c93f;
+}
+
+/* About page contact information */
+.p-contact {
+  font-family: 'Courier New', monospace;
+  color: #4b2b73;
+}
+
+/* Bulleted list on the budget page */
+ul.feature-list {
+  background-color: #ffffff;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  padding: 16px 16px 16px 36px;
+}
+
+ul.feature-list li {
+  margin-bottom: 8px;
+}
+
+/* Sample budget table */
+table.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #ffffff;
+}
+
+/* Table caption */
+table.budget-table caption {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #16223a;
+}
+
+/* Table cells and headings */
+table.budget-table th,
+table.budget-table td {
+  border: 1px solid #d7dee8;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+/* Table heading row */
+table.budget-table th {
+  background-color: #0b1f3a;
+  color: #ffffff;
+}
+
+/* Alternating table row color */
+table.budget-table tr:nth-child(even) {
+  background-color: #f4f6fa;
+}
+
+/* Highlighted featured trip row */
+table.budget-table tr.featured-trip td {
+  background-color: #fff3cd;
+  font-weight: bold;
+}
+
+/* Footer styling */
+footer.site-footer {
+  text-align: center;
+  padding: 18px;
+  color: #5a6472;
+  font-size: 0.85rem;
+}
+
+/* Makes the header smaller on mobile screens */
+@media (max-width: 480px) {
+  header.site-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* About page grid layout */
+/* Creates two columns: one for navigation and one for the main content */
+.about-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  align-items: start;
+}
+
+/* Navigation area inside the About page grid */
+.about-nav {
+  margin: 0;
+  padding: 20px;
+  text-align: left;
+  position: sticky;
+  top: 20px;
+}
+
+/* Adds space between navigation links */
+.about-nav a {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+/* Main content area of the About page */
+.about-content {
+  min-width: 0;
+}
+
+/* Keeps the About page image inside its grid column */
+.about-content .feature-image {
+  margin-top: 0;
+}
+
+/* Changes the grid to one column on smaller screens */
+@media (max-width: 700px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .about-nav {
+    text-align: center;
+    position: static;
+  }
+}

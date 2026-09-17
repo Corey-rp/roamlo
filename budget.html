@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Sets the character encoding and makes the page responsive -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title shown in the browser tab -->
+  <title>RoamLo | Sample Trip Budgets</title>
+
+  <!-- Links this page to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Header section with the page title and tagline -->
+  <header class="site-header">
+    <h1>Sample Trip Budgets</h1>
+    <p class="tagline">How RoamLo estimates what a trip will actually cost</p>
+  </header>
+
+  <!-- Main content for the budget page -->
+  <main>
+
+    <!-- Navigation links to the other pages -->
+    <nav class="page-links">
+      <a href="index.html">Home</a><br>
+      <a href="about.html">About &amp; Contact</a>
+    </nav>
+
+    <!-- Main image showing a sample budget calculator -->
+    <!-- budget.html -->
+    <img
+    class="feature-image"
+    src="images/roamlo-budget-phone.png"
+    alt="Mock phone screen showing a currency conversion and a daily trip budget breakdown"
+    >
+
+    <!-- Introduction to the sample trip budgets -->
+    <p class="p-features-intro">
+    RoamLo uses estimated daily spending to give travelers an idea of what
+    different destinations may cost. Each budget combines common travel
+    expenses such as lodging, food, transportation, and activities while
+    showing the total in both local currency and U.S. dollars.
+    </p>
+
+    <!-- Explains how the current estimates were created -->
+    <p class="p-roadmap-note">
+    The current estimates are sample values that demonstrate how RoamLo's
+    budgeting system will work. As the project develops, these fixed numbers
+    can be replaced with live exchange rates and more detailed destination
+    data.
+    </p>
+
+    <!-- Shows the current development status of the project -->
+    <p class="p-status">
+    Future versions will allow travelers to adjust factors such as trip
+    length, destination, and spending style. RoamLo will then calculate a
+    more personalized daily and total trip budget based on those choices.
+    </p>
+
+    <!-- List explaining how daily trip budgets are estimated -->
+    <h2>What Goes Into a RoamLo Budget</h2>
+
+    <ul class="feature-list">
+    <li>Estimated lodging costs based on the selected destination</li>
+    <li>Typical daily spending for food and local transportation</li>
+    <li>Estimated activity and entertainment expenses</li>
+    <li>Costs displayed in both local currency and U.S. dollars</li>
+    <li>Future support for personalized budgets and live exchange rates</li>
+    </ul>
+
+    <!-- Table showing sample daily budgets for different destinations -->
+    <h2>Sample Trip Budgets</h2>
+
+    <table class="budget-table">
+      <caption>Example daily budgets for past and future trips (estimates, not live data)</caption>
+
+      <!-- Column headings for the budget table -->
+      <thead>
+        <tr>
+          <th scope="col">Destination</th>
+          <th scope="col">Local Currency</th>
+          <th scope="col">Est. Daily Cost (Local)</th>
+          <th scope="col">Est. Daily Cost (USD)</th>
+          <th scope="col">Typical Trip Length</th>
+        </tr>
+      </thead>
+
+      <!-- Budget information for each destination -->
+      <tbody>
+        <tr class="featured-trip">
+          <td>Tokyo, Japan</td>
+          <td>JPY (&#165;)</td>
+          <td>&#165;11,000</td>
+          <td>~$73</td>
+          <td>7&ndash;10 days</td>
+        </tr>
+
+        <tr>
+          <td>Seoul, South Korea</td>
+          <td>KRW (&#8361;)</td>
+          <td>&#8361;85,000</td>
+          <td>~$62</td>
+          <td>5&ndash;7 days</td>
+        </tr>
+
+        <tr>
+          <td>Amsterdam, Netherlands</td>
+          <td>EUR (&#8364;)</td>
+          <td>&#8364;95</td>
+          <td>~$102</td>
+          <td>4&ndash;6 days</td>
+        </tr>
+
+        <tr>
+          <td>Santo Domingo, Dominican Republic</td>
+          <td>DOP (RD$)</td>
+          <td>RD$3,700</td>
+          <td>~$63</td>
+          <td>5&ndash;7 days</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+
+  <!-- Footer section with project information -->
+  <footer class="site-footer">
+    <p>RoamLo &mdash; a semester-long class project by Corey Richards</p>
+  </footer>
+
+</body>
+</html>
