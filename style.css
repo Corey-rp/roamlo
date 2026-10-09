@@ -1,5 +1,59 @@
 /* Shared stylesheet for all RoamLo pages */
 
+/* ===== Color variables ===== */
+/* Every color on the site is stored here once. The rest of the file uses var(--name). */
+/* Light mode colors (the default) */
+:root {
+  --page-bg: #f4f6fa;          /* page background */
+  --text: #1c2733;             /* main text color */
+  --header-bg: #0b1f3a;        /* header and table heading background */
+  --header-text: #ffffff;      /* text inside the header */
+  --tagline: #9fb3d1;          /* tagline under the site name */
+  --accent: #4fa3ff;           /* blue accent: header line, hover, button */
+  --box-bg: #e7edf7;           /* light blue boxes (nav, budget intro) */
+  --link: #0b1f3a;             /* navigation links */
+  --image-border: #0b1f3a;     /* border around the main images */
+  --heading-text: #0b1f3a;     /* large intro paragraphs */
+  --note-bg: #fff3cd;          /* yellow note box and featured table row */
+  --note-text: #3a2b00;        /* text inside the yellow note */
+  --note-border: #e8b96b;      /* left border of the yellow note */
+  --goals-text: #0f6b5c;       /* green goals paragraph */
+  --box-text: #16223a;         /* text in the budget intro box and table caption */
+  --warning-text: #a13d1f;     /* orange-red estimate note */
+  --muted-text: #5a6472;       /* gray text (status paragraph, footer) */
+  --skills-bg: #dcf5e8;        /* green box on the About page */
+  --skills-text: #08402f;      /* text inside the green box */
+  --skills-border: #27c93f;    /* left border of the green box */
+  --contact-text: #4b2b73;     /* purple project info text */
+  --card-bg: #ffffff;          /* list box and table background */
+  --border: #d7dee8;           /* borders on the list box and table */
+  --row-alt-bg: #f4f6fa;       /* every other table row */
+}
+
+/* Dark mode colors */
+/* script.js adds data-theme="dark" to the <html> tag, which swaps in these values */
+html[data-theme="dark"] {
+  --page-bg: #0f1724;
+  --text: #dbe3ee;
+  --header-bg: #08162b;
+  --box-bg: #1a2638;
+  --link: #cfe2ff;
+  --image-border: #2a3a52;
+  --heading-text: #e3ecf7;
+  --note-bg: #3a2f12;
+  --note-text: #f5e2b0;
+  --goals-text: #5fd4bd;
+  --box-text: #dbe3ee;
+  --warning-text: #ff9a7a;
+  --muted-text: #a3adbb;
+  --skills-bg: #0f3326;
+  --skills-text: #c6f1dc;
+  --contact-text: #c9a8f5;
+  --card-bg: #16202e;
+  --border: #2a3a52;
+  --row-alt-bg: #1a2638;
+}
+
 /* Base page styling */
 * {
   box-sizing: border-box;
@@ -8,8 +62,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6fa;
-  color: #1c2733;
+  background-color: var(--page-bg);
+  color: var(--text);
   line-height: 1.5;
 }
 
@@ -21,11 +75,11 @@ main {
 
 /* Header styling used on each page */
 header.site-header {
-  background-color: #0b1f3a;
-  color: #ffffff;
+  background-color: var(--header-bg);
+  color: var(--header-text);
   padding: 28px 20px;
   text-align: center;
-  border-bottom: 4px solid #4fa3ff;
+  border-bottom: 4px solid var(--accent);
 }
 
 header.site-header h1 {
@@ -36,8 +90,28 @@ header.site-header h1 {
 
 header.site-header p.tagline {
   margin: 0;
-  color: #9fb3d1;
+  color: var(--tagline);
   font-size: 1rem;
+}
+
+/* Light / dark mode toggle button in the header */
+.theme-toggle {
+  margin-top: 14px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--header-text);
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Button fills with the accent color when hovered */
+.theme-toggle:hover {
+  background-color: var(--accent);
+  color: var(--header-bg);
 }
 
 /* Navigation section */
@@ -45,19 +119,19 @@ nav.page-links {
   text-align: center;
   margin: 18px 0 30px;
   padding: 14px;
-  background-color: #e7edf7;
+  background-color: var(--box-bg);
   border-radius: 8px;
 }
 
 nav.page-links a {
-  color: #0b1f3a;
+  color: var(--link);
   text-decoration: none;
   font-weight: bold;
 }
 
 nav.page-links a:hover {
   text-decoration: underline;
-  color: #4fa3ff;
+  color: var(--accent);
 }
 
 /* Main image used on each page */
@@ -68,37 +142,37 @@ img.feature-image {
   height: auto;
   margin: 20px auto;
   border-radius: 10px;
-  border: 3px solid #0b1f3a;
+  border: 3px solid var(--image-border);
 }
 
 /* Home page introduction paragraph */
 .p-intro {
   font-family: Georgia, 'Times New Roman', serif;
-  color: #0b1f3a;
+  color: var(--heading-text);
   font-size: 1.15rem;
 }
 
 /* Home page problem paragraph */
 .p-problem {
   font-family: Verdana, Geneva, sans-serif;
-  color: #3a2b00;
-  background-color: #fff3cd;
+  color: var(--note-text);
+  background-color: var(--note-bg);
   padding: 12px 16px;
-  border-left: 5px solid #e8b96b;
+  border-left: 5px solid var(--note-border);
 }
 
 /* Home page goals paragraph */
 .p-goals {
   font-family: 'Courier New', Courier, monospace;
-  color: #0f6b5c;
+  color: var(--goals-text);
   font-style: italic;
 }
 
 /* Budget page introduction paragraph */
 .p-features-intro {
   font-family: 'Trebuchet MS', sans-serif;
-  color: #16223a;
-  background-color: #e7edf7;
+  color: var(--box-text);
+  background-color: var(--box-bg);
   padding: 12px 16px;
   border-radius: 8px;
 }
@@ -106,43 +180,43 @@ img.feature-image {
 /* Budget page estimate note */
 .p-roadmap-note {
   font-family: Arial, sans-serif;
-  color: #a13d1f;
+  color: var(--warning-text);
   font-weight: bold;
 }
 
 /* Budget page project status */
 .p-status {
   font-family: Tahoma, sans-serif;
-  color: #5a6472;
+  color: var(--muted-text);
   font-size: 0.95rem;
 }
 
 /* About page introduction paragraph */
 .p-about-me {
   font-family: 'Palatino Linotype', Georgia, serif;
-  color: #0b1f3a;
+  color: var(--heading-text);
   font-size: 1.15rem;
 }
 
 /* About page skills paragraph */
 .p-skills {
   font-family: Verdana, sans-serif;
-  color: #08402f;
-  background-color: #dcf5e8;
+  color: var(--skills-text);
+  background-color: var(--skills-bg);
   padding: 12px 16px;
-  border-left: 5px solid #27c93f;
+  border-left: 5px solid var(--skills-border);
 }
 
 /* About page contact information */
 .p-contact {
   font-family: 'Courier New', monospace;
-  color: #4b2b73;
+  color: var(--contact-text);
 }
 
 /* Bulleted list on the budget page */
 ul.feature-list {
-  background-color: #ffffff;
-  border: 1px solid #d7dee8;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 16px 16px 16px 36px;
 }
@@ -156,7 +230,7 @@ table.budget-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  background-color: #ffffff;
+  background-color: var(--card-bg);
 }
 
 /* Table caption */
@@ -164,31 +238,32 @@ table.budget-table caption {
   text-align: left;
   font-weight: bold;
   margin-bottom: 8px;
-  color: #16223a;
+  color: var(--box-text);
 }
 
 /* Table cells and headings */
 table.budget-table th,
 table.budget-table td {
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--border);
   padding: 10px 12px;
   text-align: left;
 }
 
 /* Table heading row */
 table.budget-table th {
-  background-color: #0b1f3a;
-  color: #ffffff;
+  background-color: var(--header-bg);
+  color: var(--header-text);
 }
 
 /* Alternating table row color */
 table.budget-table tr:nth-child(even) {
-  background-color: #f4f6fa;
+  background-color: var(--row-alt-bg);
 }
 
 /* Highlighted featured trip row */
 table.budget-table tr.featured-trip td {
-  background-color: #fff3cd;
+  background-color: var(--note-bg);
+  color: var(--note-text);
   font-weight: bold;
 }
 
@@ -196,7 +271,7 @@ table.budget-table tr.featured-trip td {
 footer.site-footer {
   text-align: center;
   padding: 18px;
-  color: #5a6472;
+  color: var(--muted-text);
   font-size: 0.85rem;
 }
 
@@ -254,131 +329,4 @@ footer.site-footer {
     text-align: center;
     position: static;
   }
-}
-
-html[data-theme="dark"] body {
-  background-color: #0f1724;
-  color: #dbe3ee;
-}
-
-/* Header gets slightly darker so it stands apart from the page */
-html[data-theme="dark"] header.site-header {
-  background-color: #08162b;
-}
-
-/* Navigation box */
-html[data-theme="dark"] nav.page-links {
-  background-color: #1a2638;
-}
-
-html[data-theme="dark"] nav.page-links a {
-  color: #cfe2ff;
-}
-
-html[data-theme="dark"] nav.page-links a:hover {
-  color: #4fa3ff;
-}
-
-/* Image border (navy would disappear on a navy page) */
-html[data-theme="dark"] img.feature-image {
-  border-color: #2a3a52;
-}
-
-/* Home page paragraphs */
-html[data-theme="dark"] .p-intro {
-  color: #e3ecf7;
-}
-
-html[data-theme="dark"] .p-problem {
-  color: #f5e2b0;
-  background-color: #3a2f12;
-}
-
-html[data-theme="dark"] .p-goals {
-  color: #5fd4bd;
-}
-
-/* Budget page paragraphs */
-html[data-theme="dark"] .p-features-intro {
-  color: #dbe3ee;
-  background-color: #1a2638;
-}
-
-html[data-theme="dark"] .p-roadmap-note {
-  color: #ff9a7a;
-}
-
-html[data-theme="dark"] .p-status {
-  color: #a3adbb;
-}
-
-/* About page paragraphs */
-html[data-theme="dark"] .p-about-me {
-  color: #e3ecf7;
-}
-
-html[data-theme="dark"] .p-skills {
-  color: #c6f1dc;
-  background-color: #0f3326;
-}
-
-html[data-theme="dark"] .p-contact {
-  color: #c9a8f5;
-}
-
-/* Bulleted list box */
-html[data-theme="dark"] ul.feature-list {
-  background-color: #16202e;
-  border-color: #2a3a52;
-}
-
-/* Budget table */
-html[data-theme="dark"] table.budget-table {
-  background-color: #16202e;
-}
-
-html[data-theme="dark"] table.budget-table caption {
-  color: #dbe3ee;
-}
-
-html[data-theme="dark"] table.budget-table th,
-html[data-theme="dark"] table.budget-table td {
-  border-color: #2a3a52;
-}
-
-html[data-theme="dark"] table.budget-table th {
-  background-color: #08162b;
-}
-
-html[data-theme="dark"] table.budget-table tr:nth-child(even) {
-  background-color: #1a2638;
-}
-
-html[data-theme="dark"] table.budget-table tr.featured-trip td {
-  color: #f5e2b0;
-  background-color: #3a2f12;
-}
-
-/* Footer */
-html[data-theme="dark"] footer.site-footer {
-  color: #a3adbb;
-}
-
-/* The light / dark toggle button in the header */
-.theme-toggle {
-  margin-top: 14px;
-  padding: 6px 14px;
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: transparent;
-  border: 2px solid #4fa3ff;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.theme-toggle:hover {
-  background-color: #4fa3ff;
-  color: #0b1f3a;
 }
