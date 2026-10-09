@@ -255,3 +255,130 @@ footer.site-footer {
     position: static;
   }
 }
+
+html[data-theme="dark"] body {
+  background-color: #0f1724;
+  color: #dbe3ee;
+}
+
+/* Header gets slightly darker so it stands apart from the page */
+html[data-theme="dark"] header.site-header {
+  background-color: #08162b;
+}
+
+/* Navigation box */
+html[data-theme="dark"] nav.page-links {
+  background-color: #1a2638;
+}
+
+html[data-theme="dark"] nav.page-links a {
+  color: #cfe2ff;
+}
+
+html[data-theme="dark"] nav.page-links a:hover {
+  color: #4fa3ff;
+}
+
+/* Image border (navy would disappear on a navy page) */
+html[data-theme="dark"] img.feature-image {
+  border-color: #2a3a52;
+}
+
+/* Home page paragraphs */
+html[data-theme="dark"] .p-intro {
+  color: #e3ecf7;
+}
+
+html[data-theme="dark"] .p-problem {
+  color: #f5e2b0;
+  background-color: #3a2f12;
+}
+
+html[data-theme="dark"] .p-goals {
+  color: #5fd4bd;
+}
+
+/* Budget page paragraphs */
+html[data-theme="dark"] .p-features-intro {
+  color: #dbe3ee;
+  background-color: #1a2638;
+}
+
+html[data-theme="dark"] .p-roadmap-note {
+  color: #ff9a7a;
+}
+
+html[data-theme="dark"] .p-status {
+  color: #a3adbb;
+}
+
+/* About page paragraphs */
+html[data-theme="dark"] .p-about-me {
+  color: #e3ecf7;
+}
+
+html[data-theme="dark"] .p-skills {
+  color: #c6f1dc;
+  background-color: #0f3326;
+}
+
+html[data-theme="dark"] .p-contact {
+  color: #c9a8f5;
+}
+
+/* Bulleted list box */
+html[data-theme="dark"] ul.feature-list {
+  background-color: #16202e;
+  border-color: #2a3a52;
+}
+
+/* Budget table */
+html[data-theme="dark"] table.budget-table {
+  background-color: #16202e;
+}
+
+html[data-theme="dark"] table.budget-table caption {
+  color: #dbe3ee;
+}
+
+html[data-theme="dark"] table.budget-table th,
+html[data-theme="dark"] table.budget-table td {
+  border-color: #2a3a52;
+}
+
+html[data-theme="dark"] table.budget-table th {
+  background-color: #08162b;
+}
+
+html[data-theme="dark"] table.budget-table tr:nth-child(even) {
+  background-color: #1a2638;
+}
+
+html[data-theme="dark"] table.budget-table tr.featured-trip td {
+  color: #f5e2b0;
+  background-color: #3a2f12;
+}
+
+/* Footer */
+html[data-theme="dark"] footer.site-footer {
+  color: #a3adbb;
+}
+
+/* The light / dark toggle button in the header */
+.theme-toggle {
+  margin-top: 14px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #4fa3ff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background-color: #4fa3ff;
+  color: #0b1f3a;
+}
