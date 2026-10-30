@@ -1,0 +1,396 @@
+/* Layout and styles for the RoamLo login, register and server response pages */
+/* These pages also load style.css, so the shared color variables and theme toggle still apply */
+
+/* ===== Auth page color variables ===== */
+/* Every new color for these pages is stored here once. The rules below only use var(--name). */
+/* Light mode colors (the default) */
+:root {
+  --auth-panel-bg: #f7f9fc;              /* off-white form panel */
+  --auth-panel-text: #0b1f3a;            /* deep navy text inside the panel */
+  --auth-muted: #4d5b6e;                 /* gray helper text in the panel */
+  --auth-input-bg: #fbfcfe;              /* text box background */
+  --auth-input-border: #7a8aa0;          /* text box border (3:1 against the panel) */
+  --auth-link: #175bb0;                  /* darker blue so links pass contrast on off-white */
+  --auth-focus: #175bb0;                 /* keyboard focus ring */
+  --auth-button-bg: #4fa3ff;             /* primary button uses the site accent */
+  --auth-button-hover: #7bbaff;          /* lighter accent when the button is hovered */
+  --auth-button-text: #0b1f3a;           /* navy button text (white on the accent fails contrast) */
+  --auth-on-photo: #f5f8fc;              /* off-white text that sits on the photo */
+  --auth-on-photo-muted: #d4e0ef;        /* softer off-white for small text on the photo */
+  --auth-scrim-strong: rgba(11, 31, 58, 0.9);   /* navy shade behind white text on the photo */
+  --auth-scrim-soft: rgba(11, 31, 58, 0.55);    /* middle of the navy shade */
+  --auth-scrim-clear: rgba(11, 31, 58, 0);      /* where the shade fades out */
+  --auth-toggle-bg: rgba(11, 31, 58, 0.72);     /* solid-looking backing for the theme toggle */
+  --auth-shadow: rgba(11, 31, 58, 0.28);        /* soft shadow under the panel */
+  --auth-radius: 10px;                   /* one corner radius for panel, inputs and buttons */
+  --auth-font: "Outfit", "Segoe UI", Arial, sans-serif;  /* geometric sans for these pages */
+}
+
+/* Dark mode colors */
+/* script.js adds data-theme="dark" to the <html> tag, which swaps in these values */
+html[data-theme="dark"] {
+  --auth-panel-bg: #0e2240;
+  --auth-panel-text: #e6edf7;
+  --auth-muted: #a9b8cc;
+  --auth-input-bg: #0a1a33;
+  --auth-input-border: #5a77a0;
+  --auth-link: #8cc4ff;
+  --auth-focus: #4fa3ff;
+  --auth-shadow: rgba(3, 10, 22, 0.5);
+}
+
+/* ===== Page shell ===== */
+/* Fills the screen so the photo can cover the whole viewport on desktop */
+body.auth-body {
+  font-family: var(--auth-font);
+  background-color: var(--auth-panel-bg);
+  color: var(--auth-panel-text);
+}
+
+.auth-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ===== Photo area ===== */
+/* On desktop the photo sits behind everything and fills the screen */
+.auth-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* The coast photo itself, cropped to fill its box */
+.auth-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Navy shade over the top and bottom of the photo so white text stays readable */
+.auth-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, var(--auth-scrim-strong) 0, var(--auth-scrim-clear) 140px),
+    linear-gradient(to top, var(--auth-scrim-strong) 0%, var(--auth-scrim-soft) 32%, var(--auth-scrim-clear) 62%);
+}
+
+/* ===== Top bar ===== */
+/* Home link on the left, theme toggle on the right */
+.auth-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px clamp(16px, 5vw, 72px);
+}
+
+/* Small link back to the home page */
+.auth-home {
+  color: var(--auth-on-photo);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: var(--auth-radius);
+}
+
+.auth-home:hover {
+  text-decoration: underline;
+}
+
+/* Theme toggle restyled to match these pages (overrides the header version in style.css) */
+.auth-top .theme-toggle {
+  margin: 0;
+  padding: 8px 14px;
+  font-family: var(--auth-font);
+  font-weight: 600;
+  color: var(--auth-on-photo);
+  background-color: var(--auth-toggle-bg);
+  border: 1px solid var(--accent);
+  border-radius: var(--auth-radius);
+}
+
+/* Toggle fills with the accent color on hover, same as the other pages */
+.auth-top .theme-toggle:hover {
+  background-color: var(--accent);
+  color: var(--auth-button-text);
+}
+
+/* ===== Wordmark on the photo ===== */
+/* Sits at the lower right of the photo, over the shaded water */
+.auth-brand {
+  position: absolute;
+  right: clamp(16px, 5vw, 72px);
+  bottom: 72px;
+  z-index: 1;
+  text-align: right;
+  color: var(--auth-on-photo);
+}
+
+/* Big bold RoamLo logo text */
+.auth-logo {
+  margin: 0;
+  font-size: clamp(3rem, 6.5vw, 5.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Tagline under the logo */
+.auth-tagline {
+  margin: 12px 0 0 auto;
+  max-width: 18ch;
+  text-wrap: balance;      /* splits the two lines evenly instead of leaving one word alone */
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  color: var(--auth-on-photo-muted);
+}
+
+/* ===== Main area with the form panel ===== */
+/* Keeps the panel on the left side, over the open water */
+.auth-main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  max-width: none;
+  margin: 0;
+  padding: 96px clamp(16px, 5vw, 72px) 32px;
+}
+
+/* Solid form panel */
+.auth-panel {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 36px;
+  background-color: var(--auth-panel-bg);
+  color: var(--auth-panel-text);
+  border-radius: var(--auth-radius);
+  box-shadow: 0 18px 50px var(--auth-shadow);
+}
+
+/* Small uppercase label above the heading (used once per page) */
+.auth-eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--auth-muted);
+}
+
+/* Panel heading */
+.auth-panel h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Short line of text under the heading */
+.auth-intro {
+  margin: 0 0 28px;
+  color: var(--auth-muted);
+}
+
+/* ===== Form fields ===== */
+/* Each label and input pair */
+.auth-field {
+  margin-bottom: 18px;
+}
+
+/* Visible label above every input */
+.auth-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Text, email and password boxes */
+.auth-field input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--auth-font);
+  font-size: 1rem;
+  color: var(--auth-panel-text);
+  background-color: var(--auth-input-bg);
+  border: 1px solid var(--auth-input-border);
+  border-radius: var(--auth-radius);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Border turns blue when hovering over a box */
+.auth-field input:hover {
+  border-color: var(--auth-focus);
+}
+
+/* Clear focus style for keyboard users on inputs, links and buttons */
+.auth-field input:focus-visible,
+.auth-button:focus-visible,
+.auth-panel a:focus-visible,
+.auth-home:focus-visible,
+.auth-footer a:focus-visible,
+.auth-top .theme-toggle:focus-visible {
+  outline: 3px solid var(--auth-focus);
+  outline-offset: 2px;
+}
+
+/* ===== Primary button ===== */
+/* Used for the form submit buttons and the single link on response pages */
+.auth-button {
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px 20px;
+  font-family: var(--auth-font);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--auth-button-text);
+  background-color: var(--auth-button-bg);
+  border: none;
+  border-radius: var(--auth-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* Lighter blue on hover */
+.auth-button:hover {
+  background-color: var(--auth-button-hover);
+}
+
+/* ===== Links under the form ===== */
+/* "New to RoamLo?" and "Already have an account?" lines */
+.auth-switch {
+  margin: 22px 0 0;
+  color: var(--auth-muted);
+  font-size: 0.95rem;
+}
+
+/* Links inside the panel */
+.auth-panel a:not(.auth-button) {
+  color: var(--auth-link);
+  font-weight: 600;
+}
+
+/* ===== Footer with the photo credit ===== */
+.auth-footer {
+  position: relative;
+  z-index: 1;
+  padding: 0 clamp(16px, 5vw, 72px) 24px;
+  font-size: 0.8rem;
+  color: var(--auth-on-photo-muted);
+}
+
+.auth-footer p {
+  margin: 0;
+}
+
+/* Credit links stay readable on the shaded photo */
+.auth-footer a {
+  color: var(--auth-on-photo);
+}
+
+/* ===== Mid-size screens ===== */
+/* Shrinks the panel padding a little before switching to the phone layout */
+@media (max-width: 1100px) {
+  .auth-panel {
+    max-width: 380px;
+    padding: 32px 28px;
+  }
+}
+
+/* ===== Phone and small tablet layout ===== */
+/* The photo becomes a band at the top with the wordmark on it, and the form sits below */
+@media (max-width: 900px) {
+  .auth-hero {
+    position: relative;
+    inset: auto;
+    height: 38vh;
+    min-height: 240px;
+  }
+
+  /* Stronger shade at the bottom of the band where the wordmark sits */
+  .auth-scrim {
+    background:
+      linear-gradient(to bottom, var(--auth-scrim-strong) 0, var(--auth-scrim-clear) 96px),
+      linear-gradient(to top, var(--auth-scrim-strong) 0%, var(--auth-scrim-soft) 55%, var(--auth-scrim-clear) 85%);
+  }
+
+  .auth-top {
+    padding: 14px 16px;
+  }
+
+  /* Wordmark moves to the lower left of the photo band */
+  .auth-brand {
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    text-align: left;
+  }
+
+  .auth-logo {
+    font-size: 2.6rem;
+  }
+
+  .auth-tagline {
+    margin: 6px 0 0;
+    max-width: none;
+    font-size: 1rem;
+  }
+
+  /* Form sits in the normal page flow below the photo */
+  .auth-main {
+    display: block;
+    flex: none;
+    padding: 0 16px;
+  }
+
+  /* Panel blends into the page instead of floating */
+  .auth-panel {
+    max-width: 520px;
+    padding: 28px 0 8px;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .auth-panel h1 {
+    font-size: 1.75rem;
+  }
+
+  /* Footer text uses the panel colors once it is off the photo */
+  .auth-footer {
+    padding: 28px 16px 24px;
+    color: var(--auth-muted);
+  }
+
+  .auth-footer a {
+    color: var(--auth-link);
+  }
+}
+
+/* ===== Reduced motion ===== */
+/* Turns off the hover and focus transitions for people who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .auth-field input,
+  .auth-button {
+    transition: none;
+  }
+}

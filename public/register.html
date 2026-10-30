@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Sets the character encoding and makes the page responsive -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title shown in the browser tab -->
+  <title>RoamLo | Create an account</title>
+
+  <!-- Loads the Outfit font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="style.css">    <!-- Shared colors and the theme toggle -->
+  <link rel="stylesheet" href="auth.css">     <!-- Layout for the login and register pages -->
+  <script src="script.js"></script>           <!-- Loads the light / dark mode script -->
+</head>
+
+<body class="auth-body">
+  <div class="auth-shell">
+
+    <!-- Photo area: full screen on desktop, a band at the top on phones -->
+    <div class="auth-hero">
+      <img
+        class="auth-photo"
+        src="images/coast.jpg"
+        srcset="images/coast-small.jpg 1200w, images/coast.jpg 2400w"
+        sizes="100vw"
+        alt="Aerial view of turquoise sea meeting a green mountain coastline"
+      >
+      <div class="auth-scrim"></div>      <!-- Navy shade so white text on the photo is readable -->
+
+      <!-- Top bar with a link home and the theme toggle -->
+      <header class="auth-top">
+        <a class="auth-home" href="index.html">&larr; Home</a>
+        <button type="button" class="theme-toggle">Dark mode</button>      <!-- Button that switches between light and dark mode -->
+      </header>
+
+      <!-- RoamLo wordmark and tagline on the photo -->
+      <div class="auth-brand">
+        <p class="auth-logo">RoamLo</p>
+        <p class="auth-tagline">Travel plans that fit your budget.</p>
+      </div>
+    </div>
+
+    <!-- Main content with the registration form -->
+    <main class="auth-main">
+      <section class="auth-panel">
+
+        <!-- Panel heading and short intro -->
+        <p class="auth-eyebrow">Join RoamLo</p>
+        <h1>Create your account</h1>
+        <p class="auth-intro">Save trip budgets and come back to them anytime.</p>
+
+        <!-- Registration form: sends username, e-mail and password to the server -->
+        <form action="/register" method="POST">
+
+          <!-- Username field -->
+          <div class="auth-field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" maxlength="50" autocomplete="username" required>
+          </div>
+
+          <!-- E-mail field -->
+          <div class="auth-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" maxlength="255" autocomplete="email" required>
+          </div>
+
+          <!-- Password field -->
+          <div class="auth-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="new-password" required>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="auth-button">Create account</button>
+        </form>
+
+        <!-- Link to the login page for returning users -->
+        <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+
+      </section>
+    </main>
+
+    <!-- Footer section with project information and the photo credit -->
+    <footer class="auth-footer">
+      <p>RoamLo, a class project by Corey Richards. Photo by <a href="https://unsplash.com/@paws_and_prints">paws and prints</a> on <a href="https://unsplash.com/photos/turquoise-ocean-meets-a-lush-green-coastline-with-sandy-beaches-8_nE3qRtNGc">Unsplash</a>.</p>
+    </footer>
+
+  </div>
+</body>
+</html>

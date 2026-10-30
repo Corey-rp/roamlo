@@ -1,0 +1,5 @@
+# Installed packages (recreate with npm install)
+node_modules/
+
+# Verification screenshots
+screenshots/

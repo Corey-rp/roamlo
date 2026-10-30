@@ -1,0 +1,14 @@
+{
+  "name": "roamlo",
+  "version": "1.0.0",
+  "description": "RoamLo travel budget class website with login and registration",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mysql2": "^3.11.5"
+  }
+}
