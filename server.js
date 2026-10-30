@@ -5,7 +5,7 @@ const express = require("express");   // web server framework
 const crypt = require("crypto");      // built-in Node module for salts and password hashing
 const mysql = require("mysql2");      // MySQL driver
 
-const app = express();
+const app = express();                // creates the web server app
 
 // ===== Middleware =====
 // Reads form data sent with method="POST" into req.body
@@ -97,12 +97,12 @@ function renderPage(heading, message, linkHref, linkText) {
         sizes="100vw"
         alt="Aerial view of turquoise sea meeting a green mountain coastline"
       >
-      <div class="auth-scrim"></div>
+      <div class="auth-scrim"></div>      <!-- Navy shade so white text on the photo is readable -->
 
       <!-- Top bar with a link home and the theme toggle -->
       <header class="auth-top">
         <a class="auth-home" href="/index.html">&larr; Home</a>
-        <button type="button" class="theme-toggle">Dark mode</button>
+        <button type="button" class="theme-toggle">Dark mode</button>      <!-- Button that switches between light and dark mode -->
       </header>
 
       <!-- RoamLo wordmark and tagline on the photo -->
@@ -115,9 +115,9 @@ function renderPage(heading, message, linkHref, linkText) {
     <!-- Main content with the server's message and one link -->
     <main class="auth-main">
       <section class="auth-panel">
-        <h1>${heading}</h1>
-        <p class="auth-intro">${message}</p>
-        <a class="auth-button" href="${linkHref}">${linkText}</a>
+        <h1>${heading}</h1>                                  <!-- The main message, e.g. "You have logged in successfully" -->
+        <p class="auth-intro">${message}</p>                 <!-- One extra sentence of detail -->
+        <a class="auth-button" href="${linkHref}">${linkText}</a>   <!-- The one next step, e.g. "Log in" -->
       </section>
     </main>
 
@@ -206,6 +206,7 @@ app.post("/register", (req, res) => {
 // ===== Login route =====
 // Receives the form from login.html
 app.post("/login", (req, res) => {
+  // Read the form fields (trim spaces off the username, not the password)
   const username = (req.body.username || "").trim();
   const plainPass = req.body.password || "";
 
@@ -217,6 +218,7 @@ app.post("/login", (req, res) => {
     "Try again"
   ));
 
+  // Empty fields count as a failed login
   if (username === "" || plainPass === "") {
     return sendIncorrect();
   }
